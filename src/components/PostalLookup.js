@@ -1,14 +1,10 @@
-function PostalLookup() {
+function PostalLookup({onNavClick}) {
     return (
       <div id="container">
         <div id="nav">
           <ul>
-            <a href="https://nulifenutritionyyc.ca/cannabis/">
-              <li className="siteLinks">Home</li>
-            </a>
-            <a href="https://nulifenutritionyyc.ca/cannabis/">
-              <li className="siteLinks">Universities</li>
-            </a>
+            <li className="siteLinks" page="home" onClick={onNavClick}>Home</li>
+            <li className="siteLinks" page="universities" onClick={onNavClick}>Universities</li>
           </ul>
         </div>
         <div id="header">

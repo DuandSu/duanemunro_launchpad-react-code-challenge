@@ -5,11 +5,30 @@ import Universities from './components/Universities';
 import PostalLookup from './components/PostalLookup';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      page: 'home',
+    }
+  }
+
+  onNavClick = (e) => {
+    const pageClicked = e.target.getAttribute('page');
+    this.setState({page: pageClicked})
+  }
+
   render () {
+    console.log("At render of App!");
+    console.log("Page: " + this.state.page);
     let output = [];
-    output.push(<HomePage key="home"/>);
-    // output.push(<Universities key="universities"/>);
-    // output.push(<PostalLookup key="postal"/>);
+
+    if (this.state.page === "universities")
+      output.push(<Universities key="universities" onNavClick={this.onNavClick}/>);
+    else if (this.state.page ==="postal")
+      output.push(<PostalLookup key="postal" onNavClick={this.onNavClick}/>);
+    else
+      output.push(<HomePage key="home" onNavClick={this.onNavClick}/>);
+
     return(
       <div>
         <head>
