@@ -1,4 +1,5 @@
 import ItemList from './ItemList';
+import { postdata } from '../containers/postdata';
 
 function HomePage({onNavClick}) {
   return (
@@ -24,7 +25,7 @@ function HomePage({onNavClick}) {
               <th>Body</th>
             </tr>
           </thead>
-          <ItemList/>  
+          <ItemList postdata={postdata}/>  
         </table>
       </div>  
     </div>
