@@ -47,6 +47,10 @@ function HomePage({onNavClick, postdata, isPending, onRequestPostAll}) {
         <div id="content">
           <h1>Home Page - CRUD Operations</h1>
           <button id="DispAllBtn" className="standardBtn">Display All</button>
+          <button id="SearchBtn" 
+            className="openModalBtn" 
+            onClick={() => {setOpenModal(true); setButtonID("SearchBtn")}}
+            >Search</button>
           <button id="AddBtn" 
             className="openModalBtn" 
             onClick={() => {setOpenModal(true); setButtonID("AddBtn")}}

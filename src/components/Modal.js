@@ -5,7 +5,11 @@ function Modal({ buttonID, closeModal }) {
     console.log("buttonID: " + buttonID);
     let modalTitleText = "No Title Text";
     let modalBodyText = "No Body Text";
-    if (buttonID === "AddBtn") {
+    if (buttonID === "SearchBtn") {
+        modalTitleText = "SEARCH";
+        modalBodyText = "Fill in the ID to search for, then COMMIT or CANCEL";
+    }
+    else if (buttonID === "AddBtn") {
         modalTitleText = "ADD";
         modalBodyText = "Fill in the fields to add, then COMMIT or CANCEL";
     }
