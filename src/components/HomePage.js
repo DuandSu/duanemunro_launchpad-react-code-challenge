@@ -42,6 +42,11 @@ function HomePage({onNavClick, postdata, isPending, onRequestPostAll}) {
         </div>
         <div id="content">
           <h1>Home Page - CRUD Operations</h1>
+          <button>Display All</button>
+          <button>Add</button>
+          <button>Edit</button>
+          <button>Delete</button>
+          <br></br>
           <br></br>
           <table>
             <thead>
