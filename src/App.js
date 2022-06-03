@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useEffect} from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 import HomePage from './components/HomePage';
@@ -34,7 +34,7 @@ class App extends Component {
 
   render () {
     const { page, onNavClick } = this.props;
-
+    console.log("Render of App. page = ", page)
     let output = [];
 
     if (page === "universities")

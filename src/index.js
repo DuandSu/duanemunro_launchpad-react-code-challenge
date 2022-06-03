@@ -7,10 +7,10 @@ import thunkMiddleware from 'redux-thunk';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { setPage } from './reducers';
+import { setPage, requestPostAll } from './reducers';
 
 const logger = createLogger();
-const rootReducer = combineReducers({setPage});
+const rootReducer = combineReducers({setPage, requestPostAll});
 const store = 
     createStore(rootReducer, applyMiddleware(thunkMiddleware, logger)); // Eventually 1 main rootReducer to combine all reducers.
 
