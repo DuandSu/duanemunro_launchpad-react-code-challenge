@@ -1,33 +1,48 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 import './App.css';
 import HomePage from './components/HomePage';
 import Universities from './components/Universities';
 import PostalLookup from './components/PostalLookup';
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      page: 'home',
-    }
-  }
+import { setPage } from './actions';
 
-  onNavClick = (e) => {
-    const pageClicked = e.target.getAttribute('page');
-    this.setState({page: pageClicked})
+const mapStateToProps = state => {
+  return {
+      page: state.setPage.page
   }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onNavClick: (e) => dispatch(setPage(e.target.getAttribute('page')))
+  }
+}
+
+class App extends Component {
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     page: 'home',
+  //   }
+  // }
+
+  // onNavClick = (e) => {
+  //   const pageClicked = e.target.getAttribute('page');
+  //   this.setState({page: pageClicked})
+  // }
 
   render () {
-    console.log("At render of App!");
-    console.log("Page: " + this.state.page);
+    const { page, onNavClick } = this.props;
+
     let output = [];
 
-    if (this.state.page === "universities")
-      output.push(<Universities key="universities" onNavClick={this.onNavClick}/>);
-    else if (this.state.page ==="postal")
-      output.push(<PostalLookup key="postal" onNavClick={this.onNavClick}/>);
+    if (page === "universities")
+      output.push(<Universities key="universities" onNavClick={onNavClick}/>);
+    else if (page ==="postal")
+      output.push(<PostalLookup key="postal" onNavClick={onNavClick}/>);
     else
-      output.push(<HomePage key="home" onNavClick={this.onNavClick}/>);
+      output.push(<HomePage key="home" onNavClick={onNavClick}/>);
 
     return(
       <div>
@@ -42,4 +57,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);

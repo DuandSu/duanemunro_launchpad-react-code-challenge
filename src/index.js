@@ -1,14 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux'; 
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createLogger } from 'redux-logger';
+import thunkMiddleware from 'redux-thunk';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { setPage } from './reducers';
+
+const logger = createLogger();
+const rootReducer = combineReducers({setPage});
+const store = 
+    createStore(rootReducer, applyMiddleware(thunkMiddleware, logger)); // Eventually 1 main rootReducer to combine all reducers.
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
