@@ -1,6 +1,8 @@
-import { Component, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import ItemList from './ItemList';
+import Modal from './Modal';
+import './HomePage.css'
 // import { postdata } from '../containers/postdata';
 
 import { requestPostAll } from '../actions';
@@ -23,6 +25,7 @@ function HomePage({onNavClick, postdata, isPending, onRequestPostAll}) {
 // function HomePage(props) {
 
     // const { onNavClick, postdata, isPending } = this.props;
+    const [openModal, setOpenModal] = useState(false);
 
     useEffect(() => {
       console.log("Start of useEffect");
@@ -42,10 +45,11 @@ function HomePage({onNavClick, postdata, isPending, onRequestPostAll}) {
         </div>
         <div id="content">
           <h1>Home Page - CRUD Operations</h1>
-          <button>Display All</button>
-          <button>Add</button>
-          <button>Edit</button>
-          <button>Delete</button>
+          <button id="DispAllBtn" className="standardBtn">Display All</button>
+          <button id="AddBtn" className="openModalBtn" onClick={() => {setOpenModal(true)}}>Add</button>
+          { openModal && <Modal closeModal={setOpenModal}/>}
+          <button id="EditBtn" className="openModalBtn">Edit</button>
+          <button id="DelBtn" className="openModalBtn">Delete</button>
           <br></br>
           <br></br>
           <table>

@@ -1,0 +1,10 @@
+.openModalBtn, .standardBtn{
+    width: 80px;
+    height: 30px;
+    border: none;
+    border-radius: 6px;
+    background-color: cornflowerblue;
+    color: white;
+    cursor: pointer;
+    margin-left: 5px;
+}
