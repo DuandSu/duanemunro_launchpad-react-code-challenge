@@ -26,6 +26,7 @@ function HomePage({onNavClick, postdata, isPending, onRequestPostAll}) {
 
     // const { onNavClick, postdata, isPending } = this.props;
     const [openModal, setOpenModal] = useState(false);
+    const [buttonID, setButtonID] = useState("");
 
     useEffect(() => {
       console.log("Start of useEffect");
@@ -46,10 +47,19 @@ function HomePage({onNavClick, postdata, isPending, onRequestPostAll}) {
         <div id="content">
           <h1>Home Page - CRUD Operations</h1>
           <button id="DispAllBtn" className="standardBtn">Display All</button>
-          <button id="AddBtn" className="openModalBtn" onClick={() => {setOpenModal(true)}}>Add</button>
-          { openModal && <Modal closeModal={setOpenModal}/>}
-          <button id="EditBtn" className="openModalBtn">Edit</button>
-          <button id="DelBtn" className="openModalBtn">Delete</button>
+          <button id="AddBtn" 
+            className="openModalBtn" 
+            onClick={() => {setOpenModal(true); setButtonID("AddBtn")}}
+            >Add</button>
+          <button id="EditBtn" 
+            className="openModalBtn"
+            onClick={() => {setOpenModal(true); setButtonID("EditBtn")}}
+            >Edit</button>
+          <button id="DelBtn" 
+            className="openModalBtn"
+            onClick={() => {setOpenModal(true); setButtonID("DelBtn")}}
+            >Delete</button>
+          { openModal && <Modal closeModal={setOpenModal} buttonID={buttonID}/>}
           <br></br>
           <br></br>
           <table>
