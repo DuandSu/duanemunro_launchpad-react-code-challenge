@@ -8,7 +8,7 @@ function ItemList({postdata}) {
       return (
           <Item
               key={i} 
-              userID={postdata[i].userID} 
+              userID={postdata[i].userId} 
               id={postdata[i].id}
               title={postdata[i].title}
               body={postdata[i].body}

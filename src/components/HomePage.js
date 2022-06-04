@@ -17,7 +17,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onRequestPost: (postArg) => dispatch(requestPost(postArg))
+      onRequestPost: (postArg, method, postInput) => dispatch(requestPost(postArg, method, postInput))
     }
 }
 
@@ -30,8 +30,8 @@ function HomePage({onNavClick, postdata, isPending, onRequestPost}) {
 
     useEffect(() => {
       console.log("Start of useEffect");
-      onRequestPost("/1");
-      // onRequestPost("");
+      // onRequestPost("/1","GET",{});
+      onRequestPost("");
     }, []);
 
     const displayAll = () => {
@@ -46,8 +46,24 @@ function HomePage({onNavClick, postdata, isPending, onRequestPost}) {
       console.log("title = " + title);
       console.log("body = " + body);
       console.log(e.target);
+      const postInput = {
+        userID: `${userID}`,
+        id: `${id}`,
+        title: `${title}`,
+        body: `${body}`,
+      }
+
       if (buttonID === "SearchBtn") {
         onRequestPost("/" + id.toString());
+      }
+      else if (buttonID === "AddBtn") {
+        onRequestPost("","POST", postInput);
+      }
+      else if (buttonID === "EditBtn") {
+        onRequestPost("/" + id.toString(),"PUT", postInput);
+      }
+      else if (buttonID === "DelBtn") {
+        onRequestPost("/" + id.toString(),"DELETE");
       }
     }
 

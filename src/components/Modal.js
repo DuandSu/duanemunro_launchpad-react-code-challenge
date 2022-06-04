@@ -47,7 +47,7 @@ function Modal({ buttonID, closeModal, clickCommit }) {
                         clickCommit(e, buttonID,
                         document.getElementById("inputUserID").value,
                         document.getElementById("inputID").value,
-                        document.getElementById("inputTitle".value),
+                        document.getElementById("inputTitle").value,
                         document.getElementById("inputBody").value)}
                     >Commit</button>
                 </div>
