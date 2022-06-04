@@ -1,7 +1,6 @@
 import Item from './Item';
 
 function ItemList({postdata}) {
-  console.log(postdata);
   let itemComponent = [];
   if (Array.isArray(postdata)) {
     itemComponent = postdata.map((prod, i) => {

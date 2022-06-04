@@ -1,16 +1,16 @@
 .modalBackground {
-    width: 50vw;
+    width: 25vw;
     height: 50vh;
     background-color: rgba(200, 200, 200);
     position: fixed;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-left: 100px;
+    padding-left: 40px;
+    justify-content: left;
+    align-items: left;
 }
 
 .modalContainer {
-    width: 500px;
-    height: 500px;
     border-radius: 12px;
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -52,6 +52,7 @@
     justify-content: center;
     align-items: center;
 }
+
 .modalContainer .modalFooter button {
     width: 150px;
     height: 45px;
@@ -64,6 +65,17 @@
     cursor: pointer;
 }
 
-#cancelButton {
+#cancelBtn, #xBtn {
     background-color: crimson;
+    cursor: pointer;
+}
+
+#commitBtn {
+    cursor: pointer;
+}
+
+label {
+    display: inline-block;
+    width: 60px;
+    text-align: right;
 }

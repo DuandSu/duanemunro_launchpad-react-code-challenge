@@ -42,6 +42,7 @@ body {
   padding: 0px;
   padding-top: 20px;
   padding-right: 20px;
+  cursor: pointer;
 }
 
 .siteLinks {

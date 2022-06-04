@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import ItemList from './ItemList';
 import Modal from './Modal';
 import './HomePage.css'
-// import { postdata } from '../containers/postdata';
 
 import { requestPost } from '../actions';
 
@@ -29,8 +28,6 @@ function HomePage({onNavClick, postdata, isPending, onRequestPost}) {
     const [buttonID, setButtonID] = useState("");
 
     useEffect(() => {
-      console.log("Start of useEffect");
-      // onRequestPost("/1","GET",{});
       onRequestPost("");
     }, []);
 
@@ -40,12 +37,7 @@ function HomePage({onNavClick, postdata, isPending, onRequestPost}) {
 
     const clickCommit = (e, buttonID, userId, id, title, body) => {
       setOpenModal(false);
-      console.log("clickCommit. buttonID = " + buttonID);
-      console.log("userId = " + userId);
-      console.log("ID = " + id);
-      console.log("title = " + title);
-      console.log("body = " + body);
-      console.log(e.target);
+
       const postInput = {
         userId: `${userId}`,
         id: `${id}`,
@@ -120,5 +112,4 @@ function HomePage({onNavClick, postdata, isPending, onRequestPost}) {
   // }
 }
 
-// export default HomePage;
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

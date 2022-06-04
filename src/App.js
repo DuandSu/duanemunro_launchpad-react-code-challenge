@@ -1,4 +1,4 @@
-import React, {Component, useEffect} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 import HomePage from './components/HomePage';
@@ -20,17 +20,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 class App extends Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     page: 'home',
-  //   }
-  // }
-
-  // onNavClick = (e) => {
-  //   const pageClicked = e.target.getAttribute('page');
-  //   this.setState({page: pageClicked})
-  // }
 
   render () {
     const { page, onNavClick } = this.props;
