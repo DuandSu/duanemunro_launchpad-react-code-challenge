@@ -8,7 +8,7 @@ function ItemList({postdata}) {
       return (
           <Item
               key={i} 
-              userID={postdata[i].userId} 
+              userId={postdata[i].userId} 
               id={postdata[i].id}
               title={postdata[i].title}
               body={postdata[i].body}
@@ -20,7 +20,7 @@ function ItemList({postdata}) {
     itemComponent.push (
       <Item
       key="1" 
-      userID={postdata.userID} 
+      userId={postdata.userId} 
       id={postdata.id}
       title={postdata.title}
       body={postdata.body}

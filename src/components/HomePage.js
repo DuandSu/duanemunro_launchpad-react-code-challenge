@@ -38,16 +38,16 @@ function HomePage({onNavClick, postdata, isPending, onRequestPost}) {
       onRequestPost("");
     }
 
-    const clickCommit = (e, buttonID, userID, id, title, body) => {
+    const clickCommit = (e, buttonID, userId, id, title, body) => {
       setOpenModal(false);
       console.log("clickCommit. buttonID = " + buttonID);
-      console.log("userID = " + userID);
+      console.log("userId = " + userId);
       console.log("ID = " + id);
       console.log("title = " + title);
       console.log("body = " + body);
       console.log(e.target);
       const postInput = {
-        userID: `${userID}`,
+        userId: `${userId}`,
         id: `${id}`,
         title: `${title}`,
         body: `${body}`,

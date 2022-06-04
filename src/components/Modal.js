@@ -36,7 +36,7 @@ function Modal({ buttonID, closeModal, clickCommit }) {
                 </div>
                 <div className="modalBody">
                     <p>{modalBodyText}</p>
-                    <input id="inputUserID" type="number"/>
+                    <input id="inputuserId" type="number"/>
                     <input id="inputID" type="number"/>
                     <input id="inputTitle" type="text"/>
                     <input id="inputBody" type="text"/>
@@ -45,7 +45,7 @@ function Modal({ buttonID, closeModal, clickCommit }) {
                     <button onClick={() => closeModal(false)} id="CancelBtn">Cancel</button>
                     <button onClick={(e) => 
                         clickCommit(e, buttonID,
-                        document.getElementById("inputUserID").value,
+                        document.getElementById("inputuserId").value,
                         document.getElementById("inputID").value,
                         document.getElementById("inputTitle").value,
                         document.getElementById("inputBody").value)}

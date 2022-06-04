@@ -10,7 +10,7 @@ export const setPage = (text) => ({
     payload: text
 })
 
-export const requestPost = (postArg, method = "GET", postInput = {userID: null, title: "", body: ""}) => (dispatch) => {
+export const requestPost = (postArg, method = "GET", postInput = {userId: null, title: "", body: ""}) => (dispatch) => {
     dispatch({ type: REQUEST_POSTDATA_PENDING });
     const postURL = "https://jsonplaceholder.typicode.com/posts" + postArg;
     console.log("postURL = " + postURL);
@@ -31,7 +31,7 @@ export const requestPost = (postArg, method = "GET", postInput = {userID: null, 
         fetch(postURL, {
             method: method,
             body: JSON.stringify({
-                userId: postInput.userID,
+                userId: postInput.userId,
                 title: postInput.title,
                 body: postInput.body
             }),

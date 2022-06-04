@@ -1,8 +1,8 @@
 
-function Item({userID, id, title, body}) {
+function Item({userId, id, title, body}) {
   return (
     <tr className="item">
-      <td>{userID}</td>
+      <td>{userId}</td>
       <td>{id}</td>
       <td>{title}</td>
       <td>{body}</td>
