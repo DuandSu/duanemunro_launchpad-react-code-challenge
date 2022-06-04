@@ -46,7 +46,9 @@ function HomePage({onNavClick, postdata, isPending, onRequestPost}) {
       console.log("title = " + title);
       console.log("body = " + body);
       console.log(e.target);
-      onRequestPost("");
+      if (buttonID === "SearchBtn") {
+        onRequestPost("/" + id.toString());
+      }
     }
 
     return (
