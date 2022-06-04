@@ -5,23 +5,23 @@ import Modal from './Modal';
 import './HomePage.css'
 // import { postdata } from '../containers/postdata';
 
-import { requestPostAll } from '../actions';
+import { requestPost } from '../actions';
 
 const mapStateToProps = state => {
     return {
-        postdata: state.requestPostAll.postdata,
-        isPending: state.requestPostAll.isPending,
-        error: state.requestPostAll.error
+        postdata: state.requestPost.postdata,
+        isPending: state.requestPost.isPending,
+        error: state.requestPost.error
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onRequestPostAll: () => dispatch(requestPostAll())
+        onRequestPost: (postArg) => dispatch(requestPost(postArg))
     }
 }
 
-function HomePage({onNavClick, postdata, isPending, onRequestPostAll}) {
+function HomePage({onNavClick, postdata, isPending, onRequestPost}) {
 // function HomePage(props) {
 
     // const { onNavClick, postdata, isPending } = this.props;
@@ -30,8 +30,24 @@ function HomePage({onNavClick, postdata, isPending, onRequestPostAll}) {
 
     useEffect(() => {
       console.log("Start of useEffect");
-      onRequestPostAll();
-    }, []); 
+      onRequestPost("/1");
+      // onRequestPost("");
+    }, []);
+
+    const displayAll = () => {
+      onRequestPost("");
+    }
+
+    const clickCommit = (e, buttonID, userID, id, title, body) => {
+      setOpenModal(false);
+      console.log("clickCommit. buttonID = " + buttonID);
+      console.log("userID = " + userID);
+      console.log("ID = " + id);
+      console.log("title = " + title);
+      console.log("body = " + body);
+      console.log(e.target);
+      onRequestPost("");
+    }
 
     return (
       <div id="container">
@@ -46,7 +62,10 @@ function HomePage({onNavClick, postdata, isPending, onRequestPostAll}) {
         </div>
         <div id="content">
           <h1>Home Page - CRUD Operations</h1>
-          <button id="DispAllBtn" className="standardBtn">Display All</button>
+          <button id="DispAllBtn" 
+            className="standardBtn"
+            onClick={() => displayAll()}
+            >Display All</button>
           <button id="SearchBtn" 
             className="openModalBtn" 
             onClick={() => {setOpenModal(true); setButtonID("SearchBtn")}}
@@ -63,7 +82,7 @@ function HomePage({onNavClick, postdata, isPending, onRequestPostAll}) {
             className="openModalBtn"
             onClick={() => {setOpenModal(true); setButtonID("DelBtn")}}
             >Delete</button>
-          { openModal && <Modal closeModal={setOpenModal} buttonID={buttonID}/>}
+          { openModal && <Modal closeModal={setOpenModal} clickCommit={clickCommit} buttonID={buttonID}/>}
           <br></br>
           <br></br>
           <table>

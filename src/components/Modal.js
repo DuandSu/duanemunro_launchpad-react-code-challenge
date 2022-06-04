@@ -1,7 +1,7 @@
 import React from "react";
 import "./Modal.css"
 
-function Modal({ buttonID, closeModal }) {
+function Modal({ buttonID, closeModal, clickCommit }) {
     console.log("buttonID: " + buttonID);
     let modalTitleText = "No Title Text";
     let modalBodyText = "No Body Text";
@@ -36,10 +36,20 @@ function Modal({ buttonID, closeModal }) {
                 </div>
                 <div className="modalBody">
                     <p>{modalBodyText}</p>
+                    <input id="inputUserID" type="number"/>
+                    <input id="inputID" type="number"/>
+                    <input id="inputTitle" type="text"/>
+                    <input id="inputBody" type="text"/>
                 </div>
                 <div className="modalFooter">
                     <button onClick={() => closeModal(false)} id="CancelBtn">Cancel</button>
-                    <button>Commit</button>
+                    <button onClick={(e) => 
+                        clickCommit(e, buttonID,
+                        document.getElementById("inputUserID").value,
+                        document.getElementById("inputID").value,
+                        document.getElementById("inputTitle".value),
+                        document.getElementById("inputBody").value)}
+                    >Commit</button>
                 </div>
             </div>
         </div>

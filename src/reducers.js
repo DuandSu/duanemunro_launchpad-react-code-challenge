@@ -25,7 +25,7 @@ const initialStatePostData = {
     error: ''
 }
 
-export const requestPostAll = (state=initialStatePostData, action={}) => {
+export const requestPost = (state=initialStatePostData, action={}) => {
     switch(action.type) {
         case REQUEST_POSTDATA_PENDING:
             return Object.assign({}, state, { isPending: true });

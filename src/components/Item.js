@@ -1,6 +1,5 @@
 
 function Item({userID, id, title, body}) {
-
   return (
     <tr className="item">
       <td>{userID}</td>
