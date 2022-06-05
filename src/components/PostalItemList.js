@@ -1,41 +1,34 @@
 import PostalItem from './PostalItem';
 
-function PostalItemList({zipData}) {
+function PostalItemList({zipdata}) {
   let itemComponent = [];
-  if (Array.isArray(zipData)) {
-    itemComponent = zipData.map((prod, i) => {
-      return (
-          <PostalItem
-              key={i} 
-              zipCode={zipData['post code']}
-              name={zipData.places[0]['place name']}
-              state={zipData.places[0].state}
-              sAbbrev={zipData.places[0]['state abbreviation']}
-              long={zipData.places[0].longitude}
-              lat={zipData.places[0].latitude}
-          />
+  try {
+    if (!Array.isArray(zipdata)) {
+      itemComponent.push (
+        <PostalItem
+          key="1"
+          zipCode={zipdata['post code']}
+          name={zipdata.places[0]['place name']}
+          state={zipdata.places[0].state}
+          sAbbrev={zipdata.places[0]['state abbreviation']}
+          long={zipdata.places[0].longitude}
+          lat={zipdata.places[0].latitude}
+        />
       )
-    })
+    }
   }
-  else {
+  catch {
     itemComponent.push (
-      <PostalItem
-        key="1" 
-        zipCode={zipData['post code']}
-        name={zipData.places[0]['place name']}
-        state={zipData.places[0].state}
-        sAbbrev={zipData.places[0]['state abbreviation']}
-        long={zipData.places[0].longitude}
-        lat={zipData.places[0].latitude}
-      />
+      <tr className="item">
+        <td>Zip Code NOT Found!</td>
+      </tr>
     )
   }
-
-return (
+  return (
     <tbody>
       {itemComponent}
     </tbody>
-);
+  );
 }
 
 export default PostalItemList;

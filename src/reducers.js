@@ -43,6 +43,7 @@ export const requestPost = (state=initialStatePostData, action={}) => {
 
 const initialStateZipData = {
     isPending: false,
+    isError: false,
     zipdata: [],
     error: ''
 }
@@ -50,11 +51,11 @@ const initialStateZipData = {
 export const requestZip = (state=initialStateZipData, action={}) => {
     switch(action.type) {
         case REQUEST_ZIPDATA_PENDING:
-            return Object.assign({}, state, { isPending: true });
+            return Object.assign({}, state, { isPending: true, isError: false });
         case REQUEST_ZIPDATA_SUCCESS:
-            return Object.assign({}, state, { zipdata: action.payload, isPending: false });
+            return Object.assign({}, state, { zipdata: action.payload, isPending: false, isError: false });
         case REQUEST_ZIPDATA_FAILED:
-            return Object.assign({}, state, { error: action.payload, isPending: false });
+            return Object.assign({}, state, { error: action.payload, isPending: false, isError: true });
         default:
             return state;        
     }
