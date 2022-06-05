@@ -21,9 +21,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 function HomePage({onNavClick, postdata, isPending, onRequestPost}) {
-// function HomePage(props) {
-
-    // const { onNavClick, postdata, isPending } = this.props;
     const [openModal, setOpenModal] = useState(false);
     const [buttonID, setButtonID] = useState("");
 
