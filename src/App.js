@@ -23,7 +23,6 @@ class App extends Component {
 
   render () {
     const { page, onNavClick } = this.props;
-    console.log("Render of App. page = ", page)
     let output = [];
 
     if (page === "universities")
