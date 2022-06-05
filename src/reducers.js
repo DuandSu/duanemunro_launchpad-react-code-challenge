@@ -5,7 +5,10 @@ import {
     REQUEST_POSTDATA_FAILED,
     REQUEST_ZIPDATA_PENDING,
     REQUEST_ZIPDATA_SUCCESS,
-    REQUEST_ZIPDATA_FAILED
+    REQUEST_ZIPDATA_FAILED,
+    REQUEST_COUNTRYDATA_PENDING,
+    REQUEST_COUNTRYDATA_SUCCESS,
+    REQUEST_COUNTRYDATA_FAILED
 } from './constants.js'
 
 
@@ -55,6 +58,26 @@ export const requestZip = (state=initialStateZipData, action={}) => {
         case REQUEST_ZIPDATA_SUCCESS:
             return Object.assign({}, state, { zipdata: action.payload, isPending: false, isError: false });
         case REQUEST_ZIPDATA_FAILED:
+            return Object.assign({}, state, { error: action.payload, isPending: false, isError: true });
+        default:
+            return state;        
+    }
+}
+
+const initialStateCountryData = {
+    isPending: false,
+    isError: false,
+    countrydata: [],
+    error: ''
+}
+
+export const requestCountry = (state=initialStateCountryData, action={}) => {
+    switch(action.type) {
+        case REQUEST_COUNTRYDATA_PENDING:
+            return Object.assign({}, state, { isPending: true, isError: false });
+        case REQUEST_COUNTRYDATA_SUCCESS:
+            return Object.assign({}, state, { countrydata: action.payload, isPending: false, isError: false });
+        case REQUEST_COUNTRYDATA_FAILED:
             return Object.assign({}, state, { error: action.payload, isPending: false, isError: true });
         default:
             return state;        

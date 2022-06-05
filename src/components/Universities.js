@@ -1,4 +1,31 @@
-function Universities({onNavClick}) {
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { requestCountry } from '../actions';
+
+const mapStateToProps = state => {
+  return {
+      countrydata: state.requestCountry.countrydata,
+      isPending: state.requestCountry.isPending,
+      isError: state.requestCountry.isError,
+      error: state.requestCountry.error
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onRequestCountry: (countryArg) => dispatch(requestCountry(countryArg))
+  }
+}
+
+function Universities({onNavClick, countrydata, isPending, onRequestCountry, isError}) {
+
+  useEffect(() => {
+    onRequestCountry("");
+  }, []);
+
+    console.log("Universities: countryData = ");
+    console.log(countrydata);
+
     return (
       <div id="container">
         <div id="nav">
@@ -18,4 +45,4 @@ function Universities({onNavClick}) {
     );
 }
 
-export default Universities;
+export default connect(mapStateToProps, mapDispatchToProps)(Universities);

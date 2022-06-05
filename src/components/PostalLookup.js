@@ -18,6 +18,7 @@ const mapDispatchToProps = (dispatch) => {
     onRequestZip: (zipArg) => dispatch(requestZip(zipArg))
   }
 }
+
 function PostalLookup({onNavClick, zipdata, isPending, onRequestZip, isError}) {
 
   const clickSearch = () => {
