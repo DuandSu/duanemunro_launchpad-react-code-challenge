@@ -43,7 +43,7 @@ function PostalLookup({onNavClick, zipdata, isPending, onRequestZip, isError}) {
           type="number" 
           placeholder="search zip code"
         />
-        <button onClick={() => clickSearch()}>Search</button>       
+        <button id="btnSearch" onClick={() => clickSearch()}>Search</button>       
         <br></br>
         <br></br>
         <table>

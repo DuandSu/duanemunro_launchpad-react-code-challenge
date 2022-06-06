@@ -49,7 +49,6 @@ class Universities extends React.Component {
     const listItem = sortedCD.map((obj, i, arr) => {
       return (
         <option key={i} value={`${arr[i].name}`}>{`${arr[i].name}`}</option>
-        // <option key={i} value={`src${arr[i].name}`.replace(/\s/g, '') }>{`${arr[i].name}`}</option>
       )
     });
     this.setState({
@@ -65,11 +64,8 @@ class Universities extends React.Component {
   }
 
   onChgSelectCountry = (e) => {
-    console.log("onChgSelectCountry:");
     const countryPicked = e.target.value;
-    console.log(e.target);
     if (countryPicked !== "srcSelect") {
-      console.log("Country Picked: " + e.target.value);
       this.props.onRequestUniversity(countryPicked);
     }
   }
@@ -118,5 +114,4 @@ class Universities extends React.Component {
   }
 }
 
-// export default Universities;
 export default connect(mapStateToProps, mapDispatchToProps)(Universities);

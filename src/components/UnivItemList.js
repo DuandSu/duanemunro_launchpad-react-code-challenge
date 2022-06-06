@@ -1,7 +1,6 @@
 import UnivItem from './UnivItem';
 
 function UnivItemList({universitydata}) {
-  console.log("UnivItemList: ");
   let itemComponent = [];
   try {
     if (Array.isArray(universitydata)) {
@@ -17,7 +16,6 @@ function UnivItemList({universitydata}) {
         return result;
       });
       itemComponent = sortedUD.map((univ, i) => {
-        console.log("Map: " + univ.country);
         return (
             <UnivItem
                 key={i} 
