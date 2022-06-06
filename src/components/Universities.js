@@ -35,8 +35,6 @@ class Universities extends React.Component {
   //
   async componentDidMount () {
     const data = await this.getAllCountries();
-    console.log("componentDidMount:");
-    console.log(data.data[0]);
     const sortedCD = data.data.sort((a, b) => {
       let result;
       if (a.name < b.name) {

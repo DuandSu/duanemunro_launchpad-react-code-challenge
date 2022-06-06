@@ -5,8 +5,18 @@ function UnivItemList({universitydata}) {
   let itemComponent = [];
   try {
     if (Array.isArray(universitydata)) {
-      console.log(universitydata[0].country);
-      itemComponent = universitydata.map((univ, i) => {
+      const sortedUD = universitydata.sort((a, b) => {
+        let result;
+        if (a.name < b.name) {
+            result = -1;
+        } else if (a.name > b.name) {
+            result = 1;
+        } else {
+            result = 0;
+        }
+        return result;
+      });
+      itemComponent = sortedUD.map((univ, i) => {
         console.log("Map: " + univ.country);
         return (
             <UnivItem
