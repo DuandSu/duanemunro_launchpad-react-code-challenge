@@ -8,7 +8,10 @@ import {
     REQUEST_ZIPDATA_FAILED,
     REQUEST_COUNTRYDATA_PENDING,
     REQUEST_COUNTRYDATA_SUCCESS,
-    REQUEST_COUNTRYDATA_FAILED
+    REQUEST_COUNTRYDATA_FAILED,
+    REQUEST_UNIVERSITYDATA_PENDING,
+    REQUEST_UNIVERSITYDATA_SUCCESS,
+    REQUEST_UNIVERSITYDATA_FAILED
 } from './constants.js'
 
 export const setPage = (text) => ({
@@ -65,4 +68,13 @@ export const requestCountry = countryArg => (dispatch) => {
     .then(response=> response.json())
     .then(data => dispatch({ type: REQUEST_COUNTRYDATA_SUCCESS, payload: data}))
     .catch(error => dispatch({ type: REQUEST_COUNTRYDATA_FAILED, payload: error}))
+}
+
+export const requestUniversity = universityArg => (dispatch) => {
+    dispatch({ type: REQUEST_UNIVERSITYDATA_PENDING });
+    const universityURL = "http://universities.hipolabs.com/search?country=" + universityArg;
+    fetch(universityURL, {})
+    .then(response=> response.json())
+    .then(data => dispatch({ type: REQUEST_UNIVERSITYDATA_SUCCESS, payload: data}))
+    .catch(error => dispatch({ type: REQUEST_UNIVERSITYDATA_FAILED, payload: error}))
 }

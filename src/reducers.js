@@ -8,7 +8,10 @@ import {
     REQUEST_ZIPDATA_FAILED,
     REQUEST_COUNTRYDATA_PENDING,
     REQUEST_COUNTRYDATA_SUCCESS,
-    REQUEST_COUNTRYDATA_FAILED
+    REQUEST_COUNTRYDATA_FAILED,
+    REQUEST_UNIVERSITYDATA_PENDING,
+    REQUEST_UNIVERSITYDATA_SUCCESS,
+    REQUEST_UNIVERSITYDATA_FAILED
 } from './constants.js'
 
 
@@ -78,6 +81,26 @@ export const requestCountry = (state=initialStateCountryData, action={}) => {
         case REQUEST_COUNTRYDATA_SUCCESS:
             return Object.assign({}, state, { countrydata: action.payload, isPending: false, isError: false });
         case REQUEST_COUNTRYDATA_FAILED:
+            return Object.assign({}, state, { error: action.payload, isPending: false, isError: true });
+        default:
+            return state;        
+    }
+}
+
+const initialStateUniversityData = {
+    isPending: false,
+    isError: false,
+    universitydata: [],
+    error: ''
+}
+
+export const requestUniversity = (state=initialStateUniversityData, action={}) => {
+    switch(action.type) {
+        case REQUEST_UNIVERSITYDATA_PENDING:
+            return Object.assign({}, state, { isPending: true, isError: false });
+        case REQUEST_UNIVERSITYDATA_SUCCESS:
+            return Object.assign({}, state, { universitydata: action.payload, isPending: false, isError: false });
+        case REQUEST_UNIVERSITYDATA_FAILED:
             return Object.assign({}, state, { error: action.payload, isPending: false, isError: true });
         default:
             return state;        

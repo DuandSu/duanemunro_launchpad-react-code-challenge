@@ -1,22 +1,23 @@
 import React from 'react';
 import c920 from '../scripts/fetch'
-// import { connect } from 'react-redux';
-// import { requestCountry } from '../actions';
+import UnivItemList from './UnivItemList';
+import { connect } from 'react-redux';
+import { requestUniversity } from '../actions';
 
-// const mapStateToProps = state => {
-//   return {
-//       countrydata: state.requestCountry.countrydata,
-//       isPending: state.requestCountry.isPending,
-//       isError: state.requestCountry.isError,
-//       error: state.requestCountry.error
-//   }
-// }
+const mapStateToProps = state => {
+  return {
+      universitydata: state.requestUniversity.universitydata,
+      isPending: state.requestUniversity.isPending,
+      isError: state.requestUniversity.isError,
+      error: state.requestUniversity.error
+  }
+}
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     onRequestCountry: (countryArg) => dispatch(requestCountry(countryArg))
-//   }
-// }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onRequestUniversity: (universityArg) => dispatch(requestUniversity(universityArg))
+  }
+}
 
 class Universities extends React.Component {
   constructor(props) {
@@ -71,9 +72,8 @@ class Universities extends React.Component {
     console.log(e.target);
     if (countryPicked !== "srcSelect") {
       console.log("Country Picked: " + e.target.value);
+      this.props.onRequestUniversity(countryPicked);
     }
-    //  document.getElementById("selectCity").value
-    // if(document.getElementById("selectCity").value === "srcAddCity")
   }
   
   render() {
@@ -99,11 +99,26 @@ class Universities extends React.Component {
                 {this.state.listItem}
             </select>
           </div>
+          <br></br>
+          <br></br>
+          <table>
+            <thead>
+              <tr>
+                <th>A2 Code</th>
+                <th>Domain</th>
+                <th>Country</th>
+                <th>State/Prov</th>
+                <th>Web Page</th>
+                <th>Name</th>
+              </tr>
+            </thead>
+            {(this.props.isPending || this.props.isError) ? "" : <UnivItemList universitydata={this.props.universitydata}/>}
+          </table>
         </div>  
       </div>
     );
   }
 }
 
-export default Universities;
-// export default connect(mapStateToProps, mapDispatchToProps)(Universities);
+// export default Universities;
+export default connect(mapStateToProps, mapDispatchToProps)(Universities);
