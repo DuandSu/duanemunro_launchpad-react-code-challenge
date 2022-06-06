@@ -25,7 +25,13 @@ class Universities extends React.Component {
       listItem: null
     };
   }
-
+  //
+  // Had some issues trying to use the loaded country API data. I decided
+  // to move to what I know better and used componentDidMount. I needed to get
+  // the project working. I also justified it by the fact that only Universities
+  // needs this data, and only the first time to load the select statement. I now
+  // have plans to figure out my original problem later.
+  //
   async componentDidMount () {
     const data = await this.getAllCountries();
     console.log("componentDidMount:");
@@ -43,7 +49,8 @@ class Universities extends React.Component {
     });
     const listItem = sortedCD.map((obj, i, arr) => {
       return (
-        <option key={i} value={`src${arr[i].name}`.replace(/\s/g, '') }>{`${arr[i].name}`}</option>
+        <option key={i} value={`${arr[i].name}`}>{`${arr[i].name}`}</option>
+        // <option key={i} value={`src${arr[i].name}`.replace(/\s/g, '') }>{`${arr[i].name}`}</option>
       )
     });
     this.setState({
@@ -59,7 +66,14 @@ class Universities extends React.Component {
   }
 
   onChgSelectCountry = (e) => {
-    const ignore = true;
+    console.log("onChgSelectCountry:");
+    const countryPicked = e.target.value;
+    console.log(e.target);
+    if (countryPicked !== "srcSelect") {
+      console.log("Country Picked: " + e.target.value);
+    }
+    //  document.getElementById("selectCity").value
+    // if(document.getElementById("selectCity").value === "srcAddCity")
   }
   
   render() {
