@@ -30,7 +30,18 @@ class Universities extends React.Component {
     const data = await this.getAllCountries();
     console.log("componentDidMount:");
     console.log(data.data[0]);
-      const listItem = data.data.map((obj, i, arr) => {
+    const sortedCD = data.data.sort((a, b) => {
+      let result;
+      if (a.name < b.name) {
+          result = -1;
+      } else if (a.name > b.name) {
+          result = 1;
+      } else {
+          result = 0;
+      }
+      return result;
+    });
+    const listItem = sortedCD.map((obj, i, arr) => {
       return (
         <option key={i} value={`src${arr[i].name}`.replace(/\s/g, '') }>{`${arr[i].name}`}</option>
       )

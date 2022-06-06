@@ -127,3 +127,40 @@ test('Basic Map and Access', () => {
         (<option key="46" value="srcUnitedKingdom">United Kingdom</option>);
 
 });
+
+test('Sort Array within the Object As function', () => {
+    function sCD (a, b) {
+        let result;
+        if (a.name < b.name) {
+            result = -1;
+        } else if (a.name > b.name) {
+            result = 1;
+        } else {
+            result = 0;
+        }
+        return result;
+    }
+
+    const sortedCD = countrydata.data.sort(sCD);
+    expect(sortedCD[0].name).toBe("Afghanistan");
+    expect(sortedCD[8].name).toBe("Antarctica");
+    expect(sortedCD[40].name).toBe("Canada");
+});
+
+test('Sort Array within the Object As inline function', () => {
+
+    const sortedCD = countrydata.data.sort((a, b) => {
+        let result;
+        if (a.name < b.name) {
+            result = -1;
+        } else if (a.name > b.name) {
+            result = 1;
+        } else {
+            result = 0;
+        }
+        return result;
+    });
+    expect(sortedCD[0].name).toBe("Afghanistan");
+    expect(sortedCD[8].name).toBe("Antarctica");
+    expect(sortedCD[40].name).toBe("Canada");
+});
