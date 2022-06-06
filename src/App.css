@@ -10,6 +10,8 @@ body {
   width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 #header {
@@ -62,4 +64,16 @@ table {
 table, th, td {
 border: 1px solid black;
 text-align: left;
+}
+
+#btnSearch {
+  width: 75px;
+  height: 25px;
+  margin: 10px;
+  border: none;
+  background-color: cornflowerblue;
+  color: white;
+  border-radius: 8px;
+  font-size:15px;
+  cursor: pointer;
 }

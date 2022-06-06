@@ -79,3 +79,12 @@ label {
     width: 60px;
     text-align: right;
 }
+
+.modalBody input {
+    margin-left: 10px;
+}
+
+.modalFooter button {
+    margin-top: 10px;
+    margin-left: 10px;
+}
